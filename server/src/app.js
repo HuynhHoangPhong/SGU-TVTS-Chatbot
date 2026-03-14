@@ -5,29 +5,28 @@ import chatbotRoutes from "./routes/chatbot.routes.js";
 
 const app = express();
 
-const allowedOrigins = (process.env.CORS_ORIGIN || "")
-    .split(",")
-    .map((item) => item.trim())
-    .filter(Boolean);
+const allowedOrigins = [
+    "http://localhost:5173",
+    "https://sgu-tvts-chatbot.vercel.app",
+];
 
-app.use(
-    cors({
-        origin(origin, callback) {
-            if (!origin) {
-                return callback(null, true);
-            }
+const corsOptions = {
+    origin(origin, callback) {
+        if (!origin) return callback(null, true);
 
-            if (
-                allowedOrigins.length === 0 ||
-                allowedOrigins.includes(origin)
-            ) {
-                return callback(null, true);
-            }
+        if (allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        }
 
-            return callback(new Error("CORS không cho phép origin này."));
-        },
-    })
-);
+        return callback(null, false);
+    },
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: false,
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 app.use(express.json());
 
