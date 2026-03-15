@@ -8,6 +8,7 @@ const app = express();
 const allowedOrigins = [
     "http://localhost:5173",
     "https://sgu-tvts-chatbot.vercel.app",
+    "https://sguhoangphong.vercel.app",
 ];
 
 const corsOptions = {
