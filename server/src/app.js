@@ -19,11 +19,10 @@ const corsOptions = {
             return callback(null, true);
         }
 
-        return callback(null, false);
+        return callback(new Error("CORS không cho phép origin này."));
     },
     methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: false,
 };
 
 app.use(cors(corsOptions));
