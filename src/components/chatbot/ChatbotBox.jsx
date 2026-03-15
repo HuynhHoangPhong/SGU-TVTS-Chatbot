@@ -6,7 +6,7 @@ export default function ChatbotBox() {
     const [messages, setMessages] = useState([
         {
             role: "bot",
-            text: "Xin chào, mình là chatbot tư vấn tuyển sinh. Bạn có thể hỏi về ngành học, học phí, phương thức xét tuyển, V-SAT hoặc kỳ thi năng khiếu.",
+            text: "Xin chào, mình là chatbot tư vấn tuyển sinh của trường đại học Sài Gòn (bản demo của Phong). Tôi có thể cung cấp thông tin tuyển sinh năm 2026.",
             document: null,
         },
     ]);
